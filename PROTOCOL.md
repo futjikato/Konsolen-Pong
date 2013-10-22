@@ -37,12 +37,16 @@ Server sends current position every 100 ms.<br>
 Client can answer ones per server message.<br>
 
 ```
-S: RA <int>					- Racket position of the opponent
-BA 							- BA border. ball position follows
-<x>							- int x-axis position of the ball
-<y>							- int y-axis position of the ball
+These messages always follow up. First RA then BA.
 
-C: RA <int>					- Own racket position
+S: RA <int>					- Racket position of the opponent
+
+S: BA <x>					- BA border. ball position follows first param is x-axis
+<y>							- second param is y-axis
+
+------
+
+C: RA <int>					- Client can send own racket position at any time
 
 ------
 
