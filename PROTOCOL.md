@@ -1,11 +1,11 @@
-h1. Protocol for Konsolen-Pong
+# Protocol for Konsolen-Pong
 
-via TCP
-Default port is 5993
-Host = Server
-Other player = Client
+via TCP<br>
+Default port is 5993<br>
+Host = Server<br>
+Other player = Client<br>
 
-h2. Handshake like stuff
+## Handshake like stuff
 
 ```
 S: OK | S: ER				- OK if server accepts new players 
@@ -17,7 +17,7 @@ S: OK | S: ER				- OK if name is accepted
 							- ER if name is invalid
 ```
 
-h2. Chat communications ( Not implemented yet )
+## Chat communications ( Not implemented yet )
 
 ```
 S: CH <user>				- Server sends chat message. In the first row the server says only the name.
@@ -29,12 +29,12 @@ C: CH <user>				- Client send chat messages just as the server sends them.
 .
 ```
 
-h2. Game turn communications
-The integer is the absolute position of the racket.
-The client always sends right after server.
-
-Server sends current position every 100 ms.
-Client can answer ones per server message.
+## Game turn communications
+The integer is the absolute position of the racket.<br>
+The client always sends right after server.<br>
+<br>
+Server sends current position every 100 ms.<br>
+Client can answer ones per server message.<br>
 
 ```
 S: RA <int>					- Racket position of the opponent
