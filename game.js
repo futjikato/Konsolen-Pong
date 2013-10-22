@@ -38,6 +38,7 @@ function Player(socket) {
 			var username = protReader.readUsername(buffer);
 			if(username) {
 				player.username = username;
+				socket.write("OK");
 				readyCb(player);
 			} else {
 				socket.destroy();
@@ -100,8 +101,10 @@ function Game(width, height) {
 	};
 
 	this.sendPositions = function() {
-		upPlayer.send("RA " + downPlayer.racketPos + "\nBA\n" + bx + "\n" + by + "\n");
-		downPlayer.send("RA " + upPlayer.racketPos + "\nBA\n" + bx + "\n" + by + "\n");
+		upPlayer.send("RA " + downPlayer.racketPos);
+		upPlayer.send("BA " + bx + "\n" + by);
+		downPlayer.send("RA " + upPlayer.racketPos);
+		downPlayer.send("BA " + bx + "\n" + by);
 	};
 }
 
